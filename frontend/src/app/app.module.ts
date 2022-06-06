@@ -9,6 +9,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 import {DetailComponent} from "./pages/detail/detail.component";
+import { WatchlistComponent } from './components/watchlist/watchlist.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {DetailComponent} from "./pages/detail/detail.component";
     RegisterComponent,
     NavComponent,
     LandingComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    WatchlistComponent
   ],
   imports: [
     BrowserModule,
