@@ -8,6 +8,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { NavComponent } from './components/nav/nav.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
+import {DetailComponent} from "./pages/detail/detail.component";
 
 @NgModule({
   declarations: [
