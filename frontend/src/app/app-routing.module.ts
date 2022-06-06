@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
-import {DetailComponent} from "./components/detail/detail.component";
+
 import {LoginComponent} from "./components/login/login.component";
 import {RegisterComponent} from "./components/register/register.component";
+import {LandingComponent} from "./pages/landing/landing.component";
+import {DetailComponent} from "./pages/detail/detail.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home'},
-  {path: 'home', component: DashboardComponent, pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: LandingComponent, pathMatch: 'full'},
   {path: 'detail', component: DetailComponent, pathMatch: 'full'},
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
-  {path: 'register', component: RegisterComponent, pathMatch: 'full'}
+  {path: 'register', redirectTo: 'login', pathMatch:'full'}
 ];
 
 @NgModule({
