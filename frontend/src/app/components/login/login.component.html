@@ -1,1 +1,42 @@
-<p>login works!</p>
+<div class="min-h-screen bg-gray-100 flex flex-col items-center justify-center" id="login">
+  <div class="card w-9/12 bg-base-100 shadow-xl grid grid-cols-2 gap-2 text-center">
+    <div class="bg-gradient">
+      <h2 class="text-3xl font-bold  mt-5 text-white">Welcome Back!</h2>
+      <figure><img src="../../../assets/welcome.png" alt="Shoes" /></figure>
+      <div class="card-body text-center text-white">
+        <p>Dont have a Account yet? <a href="" class="underline">Register Here</a></p>
+      </div>
+    </div>
+    <div class="flex justify-center text-center items-center w-full">
+      <div>
+        <h2 class="text-gray-900 text-lg mb-1 font-medium ">Login</h2>
+        <div class="form-control w-full max-w-xs">
+          <label class="label">
+            <span class="label-text">E-Mail</span>
+          </label>
+          <input type="email" placeholder="Type here" class="input input-bordered w-full max-w-xs">
+          <div class="alert alert-error shadow-lg mt-2 fade-in">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span>Error! E-Mail is wrongly formatted</span>
+            </div>
+          </div>
+          <label class="label">
+            <span class="label-text">Password</span>
+          </label>
+          <input type="password" placeholder="Type here" class="input input-bordered w-full max-w-xs">
+          <div class="alert alert-error shadow-lg mt-2">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span>Error! Password is wrong</span>
+            </div>
+          </div>
+          <button class="btn btn-wide mt-5">Login</button>
+          <button class="btn loading btn-wide mt-5">Login</button>
+        </div>
+        <div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
