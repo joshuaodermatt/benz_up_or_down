@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Website} from "../../types/website";
 
 @Component({
@@ -6,7 +6,7 @@ import {Website} from "../../types/website";
   templateUrl: './watchlist.component.html',
   styleUrls: ['./watchlist.component.scss']
 })
-export class WatchlistComponent implements OnInit {
+export class WatchlistComponent implements OnChanges {
 
   @Input()
   watchlistItems: Website[] = []
@@ -20,10 +20,15 @@ export class WatchlistComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnChanges(changes:SimpleChanges): void {
+    let currentQuery = ''
+    if (changes['query']) {
+      currentQuery = changes['query'].currentValue
+    }
     if (this.watchlistItems.length > 0) {
-      if (this.query !== "") {
-        this.watchlistItemsFiltered = this.watchlistItems.filter(it => {it.url.toUpperCase().includes(this.query.trim().toUpperCase())})
+      if (currentQuery !== "") {
+        this.watchlistItemsFiltered = this.watchlistItems.filter(it => it.url.toUpperCase().includes(currentQuery.toUpperCase()))
+        console.log(this.watchlistItemsFiltered)
         if(this.watchlistItemsFiltered.length === 0) {
           this.showNoResult = true
         }

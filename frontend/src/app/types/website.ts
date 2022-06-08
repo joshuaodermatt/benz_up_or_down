@@ -1,4 +1,7 @@
 export interface Website {
   userId: string,
-  url: string
+  url: string,
+  name: string,
+  status: string,
+  image: string
 }
