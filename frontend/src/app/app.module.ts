@@ -10,8 +10,12 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { LoginRegisterComponent } from './pages/login-register/login-register.component';
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore/";
-import {DetailComponent} from "./pages/detail/detail.component";
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
 
+export function playerFactory() {
+  return player;
+}
 
 const firebaseConfig = {
   apiKey: "AIzaSyBdStC6mvwHHqGI29NRLWlxuUoxfWYuQE8",
@@ -36,6 +40,7 @@ const firebaseConfig = {
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    LottieModule.forRoot({ player: playerFactory }),
     AngularFirestoreModule
   ],
   providers: [],
