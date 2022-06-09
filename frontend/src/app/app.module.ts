@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +28,9 @@ const firebaseConfig = {
   appId: "1:226123054066:web:cc5e87073970aac609c96b",
   measurementId: "G-VSVTDYG922"
 };
+import {DetailComponent} from "./pages/detail/detail.component";
+import { WatchlistComponent } from './components/watchlist/watchlist.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -34,14 +39,17 @@ const firebaseConfig = {
     RegisterComponent,
     NavComponent,
     LandingComponent,
-    LoginRegisterComponent
+    LoginRegisterComponent,
+    WatchlistComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     LottieModule.forRoot({ player: playerFactory }),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
