@@ -1,1 +1,8 @@
-<p>login-register works!</p>
+<div class="p-5">
+  <div *ngIf="isRegistered">
+    <app-login (login)="login($event)" (toRegister)="toRegister($event)" [loggedIn]="loggedIn"></app-login>
+  </div>
+  <div *ngIf="!isRegistered">
+    <app-register (register)="register($event)" (toLogin)="toLogin($event)"></app-register>
+  </div>
+</div>
