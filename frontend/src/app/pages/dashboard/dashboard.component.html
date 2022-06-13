@@ -1,0 +1,16 @@
+<app-nav></app-nav>
+<div class="flex items-center justify-left ml-8 mt-8">
+  <div class="flex border-2 rounded">
+    <input type="text" class="px-4 py-2 w-80" placeholder="https://www.google.com">
+    <button class="flex items-center justify-center btn" onclick="">
+      Add
+    </button>
+  </div>
+  <div class="flex border-2 rounded ml-8">
+    <input type="text" class="px-4 py-2 w-50" [(ngModel)]="input">
+    <button class="flex items-center justify-center px-4 border-l btn" onclick="" disabled="disabled">
+      Filter
+    </button>
+  </div>
+</div>
+<app-watchlist [watchlistItems]="websitelist" [query]="input"></app-watchlist>
