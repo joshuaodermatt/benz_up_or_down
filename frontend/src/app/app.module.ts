@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -36,6 +35,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
   declarations: [
     AppComponent,
     LoginComponent,
+    DetailComponent,
     RegisterComponent,
     NavComponent,
     LandingComponent,
@@ -49,9 +49,11 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     AngularFireModule.initializeApp(firebaseConfig),
     LottieModule.forRoot({ player: playerFactory }),
     AngularFirestoreModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
