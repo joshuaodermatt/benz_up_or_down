@@ -8,7 +8,10 @@ import {map} from "rxjs";
 export class AuthService {
 
   users = [
-    {email: 'test@gmail.com', password: '12345678'}
+    {email: 'test@gmail.com', password: '12345678'},
+    {email: 'moritzwicki09@gmail.com', password: 'moritzWicki'},
+    {email: 'erinbachmann@gmail.com', password: 'erinBachmann'},
+    {email: 'joshuaodermatt@gmail.com', password: 'joshuaOdermatt'},
   ];
 
   constructor() {
