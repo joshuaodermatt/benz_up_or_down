@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apikey: 'AIzaSyA0aLtvSC1Koz7__YnHbmsEsVGiNNX4OSA',
+  api: 'https://pagespeedonline.googleapis.com/pagespeedonline/v5/runPagespeed'
 };
 
 /*

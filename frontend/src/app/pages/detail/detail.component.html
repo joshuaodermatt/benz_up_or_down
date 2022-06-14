@@ -1,1 +1,20 @@
-<p>detail works!</p>
+<div class="content-wrapper">
+  <div class="top-section-horizontal">
+    <div class="top-section-vertical">
+      <h1 class="text-8xl">{{this.host}}</h1>
+      <div class="simple-stats-wrapper">
+        <h2 *ngIf="online" class="text-3xl">status: online</h2>
+        <h2 *ngIf="!online" class="text-3xl">status: offline</h2>
+        <h2 class="text-3xl">ping: {{this.ping}} ms</h2>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-section">
+    <div *ngIf="!isGenerating" (click)="generateReport()" class="button-wrapper">
+      <button class="btn btn-primary">generate report</button>
+    </div>
+    <div *ngIf="isGenerating" class="button-wrapper">
+      <div class="spinner-wrapper"><progress class="progress w-fit"></progress></div>
+    </div>
+  </div>
+</div>

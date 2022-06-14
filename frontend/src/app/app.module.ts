@@ -30,6 +30,7 @@ const firebaseConfig = {
 import {DetailComponent} from "./pages/detail/detail.component";
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     DashboardComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),

@@ -1,0 +1,40 @@
+.content-wrapper{
+  padding: 30px;
+}
+
+.top-section-horizontal {
+  height: 30vh;
+  padding-top: 8vh;
+  display: flex;
+  justify-content: center;
+}
+
+.top-section-vertical {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  text-align: center;
+}
+
+.simple-stats-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.simple-stats-wrapper > h2{
+  padding: 0px 30px 0px 30px;
+}
+
+.bottom-section {
+  padding: 50px 0px 0px 0px;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.spinner-wrapper {
+  width: 250px;
+}
