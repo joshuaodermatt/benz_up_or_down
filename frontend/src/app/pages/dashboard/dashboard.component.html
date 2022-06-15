@@ -1,8 +1,8 @@
 <app-nav></app-nav>
 <div class="flex items-center justify-left ml-8 mt-8">
   <div class="flex border-2 rounded">
-    <input type="text" class="px-4 py-2 w-80" placeholder="https://www.google.com">
-    <button class="flex items-center justify-center btn" onclick="">
+    <input type="text" class="px-4 py-2 w-80" placeholder="https://www.google.com" [(ngModel)]="AddWebsite">
+    <button class="flex items-center justify-center btn" (click)="AddToWatchlist()">
       Add
     </button>
   </div>

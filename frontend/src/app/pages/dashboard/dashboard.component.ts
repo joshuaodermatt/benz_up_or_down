@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Website} from "../../types/website";
+import {outputAst} from "@angular/compiler";
 
 @Component({
   selector: 'app-dashboard',
@@ -15,13 +16,15 @@ export class DashboardComponent implements OnInit {
     {userId: '1wfkdsfojdsf',url: 'https://facebook.com',name: new URL('https://facebook.com').hostname,image:this.getFavicon('https://facebook.com'),status: 'Online'}
   ];
 
+  AddWebsite: string = '';
+
 
   addWatchListToLocalStorage() {
     localStorage.setItem('watchlist', JSON.stringify(this.websitelist));
   }
 
   getWatchListFromLocalStorage() {
-    JSON.parse(localStorage.getItem('watchlist') || '');
+    return JSON.parse(localStorage.getItem('watchlist') || '');
   }
 
   getFavicon(url:string){
@@ -33,7 +36,23 @@ export class DashboardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    this.websitelist = this.getWatchListFromLocalStorage();
+  }
+
+  AddToWatchlist(){
+    this.websitelist.push({
+      userId: '1wfkdsfojdsf',url: this.AddWebsite, name: new URL(this.AddWebsite).hostname, image:this.getFavicon(this.AddWebsite),status: 'Online'
+    });
     this.addWatchListToLocalStorage();
+  }
+
+  deleteFromWatchlist(url:string){
+    let index = 0;
+    this.websitelist.forEach(website => {
+      if(website.url == url){
+          console.log(website)
+      }
+    })
   }
 
 }
