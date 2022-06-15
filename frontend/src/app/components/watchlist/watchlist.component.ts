@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
 import {Website} from "../../types/website";
 
 @Component({
@@ -13,6 +13,9 @@ export class WatchlistComponent implements OnChanges {
 
   @Input()
   query: string = ""
+
+  @Output()
+  delete: EventEmitter<string> = new EventEmitter<string>()
 
   showNoResult: boolean = false
 
@@ -38,5 +41,13 @@ export class WatchlistComponent implements OnChanges {
     } else {
       this.showNoResult = true
     }
+
+    if (changes['watchlistItems']) {
+      this.watchlistItems = changes['watchlistItems'].currentValue
+    }
+  }
+
+  onDelete(url: string) {
+    this.delete.emit(url)
   }
 }
