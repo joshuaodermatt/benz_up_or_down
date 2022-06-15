@@ -13,4 +13,4 @@
     </button>
   </div>
 </div>
-<app-watchlist [watchlistItems]="websitelist" [query]="input"></app-watchlist>
+<app-watchlist (delete)="deleteFromWatchlist($event)" [watchlistItems]="websitelist" [query]="input"></app-watchlist>

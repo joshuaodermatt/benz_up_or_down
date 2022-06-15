@@ -9,12 +9,7 @@ import {outputAst} from "@angular/compiler";
 })
 export class DashboardComponent implements OnInit {
 
-  websitelist: Website[] = [
-    {userId: '1wfkdsfojdsf',url: 'https://google.com', name: new URL('https://google.com').hostname, image:this.getFavicon('https://google.com'),status: 'Online'},
-    {userId: '1wfkdsfojdsf',url: 'https://Netflix.com',name: new URL('https://Netflix.com').hostname,image:this.getFavicon('https://Netflix.com'),status: 'Online'},
-    {userId: '1wfkdsfojdsf',url: 'https://youtube.com',name: new URL('https://youtube.com').hostname,image:this.getFavicon('https://youtube.com'),status: 'Online'},
-    {userId: '1wfkdsfojdsf',url: 'https://facebook.com',name: new URL('https://facebook.com').hostname,image:this.getFavicon('https://facebook.com'),status: 'Online'}
-  ];
+  websitelist: Website[] = [];
 
   AddWebsite: string = '';
 
@@ -40,19 +35,23 @@ export class DashboardComponent implements OnInit {
   }
 
   AddToWatchlist(){
+    console.log(this.isPresentInList(this.input))
+    if (this.isPresentInList(this.input)) {
+      return
+    }
     this.websitelist.push({
       userId: '1wfkdsfojdsf',url: this.AddWebsite, name: new URL(this.AddWebsite).hostname, image:this.getFavicon(this.AddWebsite),status: 'Online'
     });
     this.addWatchListToLocalStorage();
   }
 
-  deleteFromWatchlist(url:string){
-    let index = 0;
-    this.websitelist.forEach(website => {
-      if(website.url == url){
-          console.log(website)
-      }
-    })
+  deleteFromWatchlist(url:string) {
+    console.log('deleting')
+    console.log(url)
+    this.websitelist = this.websitelist.filter(it => it.url !== url)
   }
 
+  isPresentInList(input: string) {
+    return (this.websitelist.filter(it => it.url === input).length > 0)
+  }
 }
