@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    this.addWatchListToLocalStorage();
     this.websitelist = this.getWatchListFromLocalStorage();
   }
 
