@@ -15,6 +15,15 @@ export class DashboardComponent implements OnInit {
     {userId: '1wfkdsfojdsf',url: 'https://facebook.com',name: new URL('https://facebook.com').hostname,image:this.getFavicon('https://facebook.com'),status: 'Online'}
   ];
 
+
+  addWatchListToLocalStorage() {
+    localStorage.setItem('watchlist', JSON.stringify(this.websitelist));
+  }
+
+  getWatchListFromLocalStorage() {
+    JSON.parse(localStorage.getItem('watchlist') || '');
+  }
+
   getFavicon(url:string){
     return 'https://www.google.com/s2/favicons?domain='+url+'&sz=128';
   }
@@ -24,6 +33,7 @@ export class DashboardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    this.addWatchListToLocalStorage();
   }
 
 }
