@@ -39,5 +39,4 @@ export class WatchlistComponent implements OnChanges {
       this.showNoResult = true
     }
   }
-
 }

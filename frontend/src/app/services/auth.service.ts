@@ -21,6 +21,7 @@ export class AuthService {
     for (const user of this.users) {
       if (user.email === email && user.password === password) {
         localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('email', email);
         return true;
       }
     }
@@ -29,7 +30,8 @@ export class AuthService {
   }
 
   SignOut() {
-    localStorage.setItem('isLoggedIn', 'false');
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('email');
   }
 
   Register(email: string, password: string): boolean {
@@ -40,6 +42,7 @@ export class AuthService {
     }
     this.users.push({email: email, password: password});
     localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('email', email);
     return true;
 
   }
