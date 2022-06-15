@@ -20,6 +20,54 @@ export class DetailComponent implements OnInit {
   host = ''
   isGenerating = false
   hasGenerated = false
+  report: Response = {
+    lighthouseResult: {
+      audits: {
+        'speed-index': {
+          title: '',
+          description: '',
+          score: 0,
+          displayValue: ''
+        },
+        'modern-image-formats': {
+          title: '',
+          description: '',
+          score: 0,
+          displayValue: ''
+        },
+        'first-meaningful-paint': {
+          title: '',
+          description: '',
+          score: 0,
+          displayValue: ''
+        },
+        'third-party-summary': {
+          title: '',
+          description: '',
+          score: 0,
+          displayValue: ''
+        },
+        'server-response-time': {
+          title: '',
+          description: '',
+          score: 0,
+          displayValue: ''
+        },
+        'bootup-time': {
+          title: '',
+          description: '',
+          score: 0,
+          displayValue: ''
+        },
+        redirects: {
+          title: '',
+          description: '',
+          score: 0,
+          displayValue: ''
+        }
+      }
+    }
+  }
 
   constructor(
     private router: Router,
@@ -28,12 +76,13 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     const parsedUrl = this.router.parseUrl(this.router.url)
-    if (parsedUrl.queryParams['url']) {
+     if (parsedUrl.queryParams['url']) {
       this.url = parsedUrl.queryParams['url']
       this.host = new URL(this.url).host
     } else {
       this.router.navigate(['dashboard'])
     }
+
     this.getPing()
   }
 
@@ -59,20 +108,23 @@ export class DetailComponent implements OnInit {
 
   generateReport() {
     this.isGenerating = true
-    let headers = new HttpHeaders();
-    headers = headers.set('key', environment.apikey);
 
-    this.httpClient.get<Response>(environment.api, {headers: headers}).subscribe(
+    this.httpClient.get<Response>(environment.api + '?url=' + this.url).subscribe(
     (response) => {
-        console.log(response.lighthouseResult.audits["first-meaningful-paint"])
+        this.report = response
+        this.hasGenerated = true
+        this.isGenerating = false
+
       },
       (error) => {
         console.log("error occured")
+        console.log(error)
         return error
       }
     )
-
   }
+
+
 }
 
 

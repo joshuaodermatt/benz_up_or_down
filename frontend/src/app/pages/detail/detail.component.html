@@ -1,3 +1,5 @@
+<app-nav></app-nav>
+
 <div class="content-wrapper">
   <div class="top-section-horizontal">
     <div class="top-section-vertical">
@@ -10,11 +12,88 @@
     </div>
   </div>
   <div class="bottom-section">
-    <div *ngIf="!isGenerating" (click)="generateReport()" class="button-wrapper">
+    <div *ngIf="!isGenerating && !hasGenerated" (click)="generateReport()" class="button-wrapper">
       <button class="btn btn-primary">generate report</button>
     </div>
     <div *ngIf="isGenerating" class="button-wrapper">
-      <div class="spinner-wrapper"><progress class="progress w-fit"></progress></div>
+      <div class="spinner-wrapper"><progress class="progress"></progress></div>
+    </div>
+    <div *ngIf="hasGenerated" class="metrics-wrapper">
+
+
+      <div class="card w-full bg-base-100 shadow-xl top-spacer">
+        <div class="card-body">
+          <h1 class="text-3xl">{{this.report.lighthouseResult.audits['modern-image-formats'].title }}</h1>
+          <h2 class="text-xs ">{{this.report.lighthouseResult.audits['modern-image-formats'].description.split('[Learn more]')[0]}}</h2>
+          <h1 class="text-lg score-title">score: {{this.report.lighthouseResult.audits['modern-image-formats'].score * 100}}%</h1>
+          <progress class="progress progress-success w-56 green" value="0" max="1" [value]="this.report.lighthouseResult.audits['modern-image-formats'].score"></progress>
+          <h2 class="text-xl">{{this.report.lighthouseResult.audits['modern-image-formats'].displayValue}}</h2>
+        </div>
+      </div>
+
+      <div class="card w-full bg-base-100 shadow-xl top-spacer">
+        <div class="card-body">
+          <h1 class="text-3xl">{{this.report.lighthouseResult.audits['first-meaningful-paint'].title }}</h1>
+          <h2 class="text-xs ">{{this.report.lighthouseResult.audits['first-meaningful-paint'].description.split('[Learn more]')[0]}}</h2>
+          <h1 class="text-lg score-title">score: {{this.report.lighthouseResult.audits['first-meaningful-paint'].score * 100}}%</h1>
+          <progress class="progress progress-success w-56" value="0" max="1" [value]="this.report.lighthouseResult.audits['first-meaningful-paint'].score"></progress>
+          <h2 class="text-xl">{{this.report.lighthouseResult.audits['first-meaningful-paint'].displayValue}}</h2>
+        </div>
+      </div>
+
+
+      <div class="card w-full bg-base-100 shadow-xl top-spacer">
+        <div class="card-body">
+          <h1 class="text-3xl">{{this.report.lighthouseResult.audits['third-party-summary'].title }}</h1>
+          <h2 class="text-xs ">{{this.report.lighthouseResult.audits['third-party-summary'].description.split('[Learn more]')[0]}}</h2>
+          <h1 class="text-lg score-title">score: {{this.report.lighthouseResult.audits['third-party-summary'].score * 100}}%</h1>
+          <progress class="progress progress-success w-56" value="0" max="1" [value]="this.report.lighthouseResult.audits['third-party-summary'].score"></progress>
+          <h2 class="text-xl">{{this.report.lighthouseResult.audits['third-party-summary'].displayValue}}</h2>
+        </div>
+      </div>
+
+
+      <div class="card w-full bg-base-100 shadow-xl top-spacer">
+        <div class="card-body">
+          <h1 class="text-3xl">{{this.report.lighthouseResult.audits['server-response-time'].title }}</h1>
+          <h2 class="text-xs ">{{this.report.lighthouseResult.audits['server-response-time'].description.split('[Learn more]')[0]}}</h2>
+          <h1 class="text-lg score-title">score: {{this.report.lighthouseResult.audits['server-response-time'].score * 100}}%</h1>
+          <progress class="progress progress-success w-56" value="0" max="1" [value]="this.report.lighthouseResult.audits['server-response-time'].score"></progress>
+          <h2 class="text-xl">{{this.report.lighthouseResult.audits['server-response-time'].displayValue}}</h2>
+        </div>
+      </div>
+
+
+      <div class="card w-full bg-base-100 shadow-xl top-spacer">
+        <div class="card-body">
+          <h1 class="text-3xl">{{this.report.lighthouseResult.audits['bootup-time'].title }}</h1>
+          <h2 class="text-xs ">{{this.report.lighthouseResult.audits['bootup-time'].description.split('[Learn more]')[0]}}</h2>
+          <h1 class="text-lg score-title">score: {{this.report.lighthouseResult.audits['bootup-time'].score * 100}}%</h1>
+          <progress class="progress progress-success w-56" value="0" max="1" [value]="this.report.lighthouseResult.audits['bootup-time'].score"></progress>
+          <h2 class="text-xl">{{this.report.lighthouseResult.audits['bootup-time'].displayValue}}</h2>
+        </div>
+      </div>
+
+
+      <div class="card w-full bg-base-100 shadow-xl top-spacer">
+        <div class="card-body">
+          <h1 class="text-3xl">{{this.report.lighthouseResult.audits['redirects'].title }}</h1>
+          <h2 class="text-xs ">{{this.report.lighthouseResult.audits['redirects'].description.split('[Learn more]')[0]}}</h2>
+          <h1 class="text-lg score-title">score: {{this.report.lighthouseResult.audits['redirects'].score * 100}}%</h1>
+          <progress class="progress progress-success w-56 red" value="0" max="1" [value]="this.report.lighthouseResult.audits['redirects'].score"></progress>
+          <h2 class="text-xl">{{this.report.lighthouseResult.audits['redirects'].displayValue}}</h2>
+        </div>
+      </div>
+
+      <div class="card w-full bg-base-100 shadow-xl top-spacer">
+        <div class="card-body">
+          <h1 class="text-3xl">{{this.report.lighthouseResult.audits['speed-index'].title }}</h1>
+          <h2 class="text-xs ">{{this.report.lighthouseResult.audits['speed-index'].description.split('[Learn more]')[0]}}</h2>
+          <h1 class="text-lg score-title">score: {{this.report.lighthouseResult.audits['speed-index'].score * 100}}%</h1>
+          <progress class="progress orange" value="0" max="1" [value]="this.report.lighthouseResult.audits['speed-index'].score"></progress>
+          <h2 class="text-xl">{{this.report.lighthouseResult.audits['speed-index'].displayValue}}</h2>
+        </div>
+      </div>
     </div>
   </div>
 </div>
