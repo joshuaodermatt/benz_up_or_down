@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
 import {Website} from "../../types/website";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-watchlist',
@@ -21,11 +22,14 @@ export class WatchlistComponent implements OnChanges {
 
   watchlistItemsFiltered: Website[] = []
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnChanges(changes:SimpleChanges): void {
     let currentQuery = ''
     if (changes['query']) {
+      console.log('query changed')
       currentQuery = changes['query'].currentValue
     }
     if (this.watchlistItems.length > 0) {
@@ -43,11 +47,17 @@ export class WatchlistComponent implements OnChanges {
     }
 
     if (changes['watchlistItems']) {
+      console.log('changes')
       this.watchlistItems = changes['watchlistItems'].currentValue
+      this.watchlistItemsFiltered = this.watchlistItems
     }
   }
 
   onDelete(url: string) {
     this.delete.emit(url)
+  }
+
+  onDetail(url: string) {
+    this.router.navigateByUrl(`detail?url=${url}`)
   }
 }

@@ -31,15 +31,10 @@ export class DashboardComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.addWatchListToLocalStorage();
     this.websitelist = this.getWatchListFromLocalStorage();
   }
 
   AddToWatchlist(){
-    console.log(this.isPresentInList(this.input))
-    if (this.isPresentInList(this.input)) {
-      return
-    }
     this.websitelist.push({
       userId: '1wfkdsfojdsf',url: this.AddWebsite, name: new URL(this.AddWebsite).hostname, image:this.getFavicon(this.AddWebsite),status: 'Online'
     });
@@ -50,9 +45,7 @@ export class DashboardComponent implements OnInit {
     console.log('deleting')
     console.log(url)
     this.websitelist = this.websitelist.filter(it => it.url !== url)
+    this.addWatchListToLocalStorage()
   }
 
-  isPresentInList(input: string) {
-    return (this.websitelist.filter(it => it.url === input).length > 0)
-  }
 }
