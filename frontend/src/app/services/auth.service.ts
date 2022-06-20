@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {map} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
     {email: 'joshuaodermatt@gmail.com', password: 'joshuaOdermatt'},
   ];
 
-  constructor() {
+  constructor(private router:Router) {
   }
 
   SignIn(email: string, password: string): boolean {
@@ -32,6 +33,7 @@ export class AuthService {
   SignOut() {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('email');
+    this.router.navigateByUrl('/home');
   }
 
   Register(email: string, password: string): boolean {
